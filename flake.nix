@@ -21,13 +21,14 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./nixos/system.nix
-          ./nixos/packages.nix
+          ./nixos/system/system.nix
+          ./nixos/system/packages.nix
+          ./nixos/system/nvidia.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.tomas = import ./nixos/home.nix;
+            home-manager.users.tomas = import ./nixos/home/home.nix;
           }
         ];
       };

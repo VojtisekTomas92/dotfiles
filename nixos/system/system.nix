@@ -76,12 +76,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
-    image = "/home/tomas/wallpaper.jpg";
-  };
-
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   system.stateVersion = "24.05"; # Did you read the comment?

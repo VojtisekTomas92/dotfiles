@@ -5,14 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    stylix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -25,7 +23,6 @@
           ./nixos/system/packages.nix
           ./nixos/system/nvidia.nix
           home-manager.nixosModules.home-manager
-          stylix.nixosModules.stylix
           {
             home-manager.useUserPackages = true;
             home-manager.users.tomas = import ./nixos/home/home.nix;

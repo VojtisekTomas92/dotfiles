@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  stylix,
   ...
 }: {
   imports = [
@@ -11,8 +10,6 @@
   home.packages = with pkgs; [
     htop
   ];
-
-  stylix.autoEnable = true;
 
   home.sessionVariables = {
   };

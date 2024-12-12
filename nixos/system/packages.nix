@@ -2,31 +2,26 @@
   pkgs,
   inputs,
   ...
-}: let
-  pkgsUnstable = import inputs.nixpkgs-unstable {inherit (pkgs) system config overlays;};
-in {
-  environment.systemPackages = pkgs.lib.mkMerge [
-    (with pkgs; [
-      lshw
-      git
-      pciutils
-      keepassxc
-    ])
-    (with pkgsUnstable; [
-      firefox
-      vesktop
-      vscode
-      nixd
-      alejandra
+}: {
+  environment.systemPackages = with pkgs; [
+    lshw
+    git
+    pciutils
+    keepassxc
+    firefox
+    vesktop
+    vscode
+    nixd
+    alejandra
+    base16-schemes
 
-      (vivaldi.overrideAttrs
-        (oldAttrs: {
-          proprietaryCodecs = true;
-          enableWidevine = true;
-          dontWrapQtApps = false;
-          dontPatchELF = true;
-          nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
-        }))
-    ])
+    (vivaldi.overrideAttrs
+      (oldAttrs: {
+        proprietaryCodecs = true;
+        enableWidevine = true;
+        dontWrapQtApps = false;
+        dontPatchELF = true;
+        nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
+      }))
   ];
 }

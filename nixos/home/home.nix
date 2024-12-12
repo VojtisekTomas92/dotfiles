@@ -3,7 +3,9 @@
   pkgs,
   ...
 }: {
-  programs.zsh.enable = true;
+  imports = [
+    ./zsh.nix
+  ];
 
   home.packages = with pkgs; [
     htop

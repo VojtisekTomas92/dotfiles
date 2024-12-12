@@ -27,7 +27,6 @@
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
           {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.tomas = import ./nixos/home/home.nix;
           }

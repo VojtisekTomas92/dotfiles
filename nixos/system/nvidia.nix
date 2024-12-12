@@ -16,7 +16,8 @@
 
   services.xserver.videoDrivers = ["nvidia"];
   boot.initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-  hardware.opengl.enable = true;
+  #hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;

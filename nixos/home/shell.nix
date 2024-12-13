@@ -13,5 +13,8 @@
     };
   };
 
+  home.sessionVariables = {
+  };
+
   home.file.".zshrc".source = ../../.zshrc;
 }

@@ -18,6 +18,8 @@
     flatpak
     discord-canary
     ksystemlog
+    nix-output-monitor
+    nh
 
     (vivaldi.overrideAttrs
       (oldAttrs: {

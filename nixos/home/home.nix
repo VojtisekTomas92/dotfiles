@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./zsh.nix
+    ./plasma.nix
   ];
 
   home.packages = with pkgs; [

@@ -5,12 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.1";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    nix-flatpak,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -23,6 +25,7 @@
           ./nixos/system/packages.nix
           ./nixos/system/nvidia.nix
           home-manager.nixosModules.home-manager
+          nix-flatpak.nixosModules.nix-flatpak
           {
             home-manager.useUserPackages = true;
             home-manager.users.tomas = import ./nixos/home/home.nix;

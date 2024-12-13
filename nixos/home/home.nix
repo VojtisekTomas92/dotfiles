@@ -11,6 +11,12 @@
     htop
   ];
 
+  programs.fzf = {
+    enable = true;
+    colors = {
+    };
+  };
+
   home.sessionVariables = {
   };
 

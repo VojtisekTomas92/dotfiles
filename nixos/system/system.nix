@@ -68,13 +68,18 @@
     #media-session.enable = true;
   };
 
+  services.flatpak.enable = true;
+
   users.users.tomas = {
     isNormalUser = true;
     description = "Tomas";
     extraGroups = ["networkmanager" "wheel"];
   };
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+
+  security.polkit.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];

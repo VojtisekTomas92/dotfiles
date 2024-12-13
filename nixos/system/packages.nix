@@ -14,6 +14,9 @@
     nixd
     alejandra
     base16-schemes
+    flatpak
+    discord-canary
+    ksystemlog
 
     (vivaldi.overrideAttrs
       (oldAttrs: {
@@ -23,5 +26,10 @@
         dontPatchELF = true;
         nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
       }))
+  ];
+
+  services.flatpak.packages = [
+    "io.github.MakovWait.Godots"
+    "im.nheko.Nheko"
   ];
 }

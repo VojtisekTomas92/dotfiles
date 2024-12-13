@@ -8,7 +8,12 @@ source /home/tomas/dotfiles/.p10k.zsh
 
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-autosuggestions
 
 alias nrebuild="nh os switch /home/tomas/dotfiles"
+
+# Enable word movement using ctrl + arrow
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word

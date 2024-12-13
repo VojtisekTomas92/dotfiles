@@ -8,6 +8,7 @@
   imports = [
     ./shell.nix
     ./plasma.nix
+    ./neovim.nix
   ];
 
   home.packages = with pkgs; [

@@ -34,6 +34,7 @@
           nix-flatpak.nixosModules.nix-flatpak
           {
             home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
+            useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.tomas = import ./nixos/home/home.nix;
           }

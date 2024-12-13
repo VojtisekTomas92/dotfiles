@@ -8,7 +8,6 @@
   imports = [
     ./zsh.nix
     ./plasma.nix
-    ./starship.nix
   ];
 
   home.packages = with pkgs; [

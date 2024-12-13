@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -27,6 +28,14 @@
         nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
       }))
   ];
+
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.hasklug
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+    ];
+  };
 
   services.flatpak.packages = [
     "io.github.MakovWait.Godots"

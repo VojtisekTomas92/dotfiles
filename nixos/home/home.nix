@@ -6,19 +6,13 @@
   ...
 }: {
   imports = [
-    ./zsh.nix
+    ./shell.nix
     ./plasma.nix
   ];
 
   home.packages = with pkgs; [
     htop
   ];
-
-  programs.fzf = {
-    enable = true;
-    colors = {
-    };
-  };
 
   home.sessionVariables = {
   };

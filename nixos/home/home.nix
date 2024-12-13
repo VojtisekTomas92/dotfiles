@@ -1,11 +1,13 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
     ./zsh.nix
     ./plasma.nix
+    ./starship.nix
   ];
 
   home.packages = with pkgs; [

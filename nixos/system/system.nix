@@ -78,7 +78,6 @@
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-
   security.polkit.enable = true;
 
   nixpkgs.config.allowUnfree = true;

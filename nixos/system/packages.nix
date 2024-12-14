@@ -22,8 +22,8 @@
     obsidian
     kitty
     wofi
-
     wl-clipboard
+    xwaylandvideobridge
     (vivaldi.overrideAttrs
       (oldAttrs: {
         proprietaryCodecs = true;

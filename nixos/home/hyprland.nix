@@ -9,7 +9,11 @@
     xwayland.enable = true;
     settings = {};
     extraConfig = ''
-      source = /home/tomas/dotfiles/hyprland.conf
+      source = /home/tomas/dotfiles/hyprland/hyprland.conf
     '';
+  };
+
+  home.file.".config/waybar/config.jsonc" = {
+    config.lib
   };
 }

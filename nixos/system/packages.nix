@@ -20,8 +20,10 @@
     nix-output-monitor
     nh
     obsidian
+    kitty
+    wofi
 
-wl-clipboard
+    wl-clipboard
     (vivaldi.overrideAttrs
       (oldAttrs: {
         proprietaryCodecs = true;

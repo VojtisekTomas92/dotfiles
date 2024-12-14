@@ -35,6 +35,7 @@
           home-manager.nixosModules.home-manager
           nix-flatpak.nixosModules.nix-flatpak
           {
+            home-manager.backupFileExtension = "backup";
             home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

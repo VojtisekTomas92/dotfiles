@@ -12,8 +12,16 @@
   ];
 
   home.packages = with pkgs; [
+    syncthingtray
     htop
   ];
+
+  services.syncthing = {
+    enable = true;
+    tray = {
+      enable = true;
+    };
+  };
 
   home.sessionVariables = {
   };

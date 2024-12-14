@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -13,6 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # Define your hostname.
   networking.hostName = "nixos";
+  nix.settings.max-jobs = "auto";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -39,6 +41,18 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  # TODO Move that to its own file at some point
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -79,6 +93,13 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   security.polkit.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];

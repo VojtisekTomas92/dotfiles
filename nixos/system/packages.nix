@@ -10,7 +10,6 @@
     pciutils
     keepassxc
     firefox
-    vesktop
     vscode
     nixd
     alejandra
@@ -20,7 +19,9 @@
     ksystemlog
     nix-output-monitor
     nh
+    obsidian
 
+wl-clipboard
     (vivaldi.overrideAttrs
       (oldAttrs: {
         proprietaryCodecs = true;

@@ -12,7 +12,6 @@
       source = /home/tomas/dotfiles/hyprland/hyprland.conf
     '';
     plugins = with pkgs.hyprlandPlugins; [
-      hyprsplit
     ];
   };
 

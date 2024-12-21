@@ -104,7 +104,7 @@
   # I need this to get the cirtual camera in obs
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
-    kernelModules = ["snd-seq" "snd-rawmidi" "v4l2loopback"];
+    kernelModules = ["snd-seq" "snd-rawmidi" "v4l2loopback" "fuse"];
   };
   # Shadowpc?
   # Hardware hybrid decoding
@@ -118,6 +118,13 @@
     extraPackages = with pkgs; [nvidia-vaapi-driver];
   };
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    nss
+  ];
+  hardware.firmware = [pkgs.firmwareLinuxNonfree];
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.blacklistedKernelModules = ["rtw_8821ce"];
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   system.stateVersion = "24.05"; # Did you read the comment?

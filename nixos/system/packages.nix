@@ -33,7 +33,14 @@
     obs-studio
     appimage-run
     # Shadowpc dependencies?
+    fuse
+    fuse3
+    nss
+
+    libva
     libva-utils
+    libinput
+    glib
 
     (vivaldi.overrideAttrs
       (oldAttrs: {

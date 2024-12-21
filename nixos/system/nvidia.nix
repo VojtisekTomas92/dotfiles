@@ -8,10 +8,15 @@
   boot.blacklistedKernelModules = ["i915"];
 
   environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
+    MOZ_DISABLE_RDD_SANDBOX = "1";
+    NVD_BACKEND = "direct";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_NO_HARDWARE_CURSORS = "1"; # For Sway or other wlroots-based compositors
     __NV_PRIME_RENDER_OFFLOAD = 1;
     __VK_LAYER_NV_optimus = "NVIDIA_only";
+    EGL_PLATFORM = "wayland";
   };
 
   services.xserver.videoDrivers = ["nvidia"];

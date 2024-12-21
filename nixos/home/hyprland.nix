@@ -20,11 +20,11 @@
     source = config.lib.file.mkOutOfStoreSymlink "/home/tomas/dotfiles/waybar/config.jsonc";
   };
 
-  home.file.".config/eww/eww.css" = {
+  home.file.".config/eww/eww.scss" = {
     source = config.lib.file.mkOutOfStoreSymlink "/home/tomas/dotfiles/eww/eww.scss";
   };
 
-  home.file.".congfig/eww/eww.yuck" = {
+  home.file.".config/eww/eww.yuck" = {
     source = config.lib.file.mkOutOfStoreSymlink "/home/tomas/dotfiles/eww/eww.yuck";
   };
 
@@ -33,7 +33,7 @@
     package = pkgs.rofi-wayland;
   };
 
-  programs.eww = {
-    enable = true;
-  };
+  home.packages = with pkgs; [
+    eww
+  ];
 }

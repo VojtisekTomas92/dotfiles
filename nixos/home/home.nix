@@ -16,6 +16,8 @@
   home.packages = with pkgs; [
     syncthingtray
     htop
+    grim
+    slurp
   ];
 
   home.keyboard.layout = "de";

@@ -16,6 +16,7 @@
     base16-schemes
     flatpak
     discord-canary
+    discord
     ksystemlog
     nix-output-monitor
     nh
@@ -23,7 +24,17 @@
     kitty
     wofi
     wl-clipboard
-    xwaylandvideobridge
+    python3
+    ags
+    nodejs
+    jq
+    aseprite
+    vesktop
+    obs-studio
+    appimage-run
+    # Shadowpc dependencies?
+    libva-utils
+
     (vivaldi.overrideAttrs
       (oldAttrs: {
         proprietaryCodecs = true;

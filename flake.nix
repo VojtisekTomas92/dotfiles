@@ -31,7 +31,7 @@
         modules = [
           ./nixos/system/system.nix
           ./nixos/system/packages.nix
-          ./nixis/system/distrobox.nix
+          ./nixos/system/distrobox.nix
           ./nixos/system/nvidia.nix
           home-manager.nixosModules.home-manager
           nix-flatpak.nixosModules.nix-flatpak

@@ -12,6 +12,8 @@
       inputs.home-manager.follows = "home-manager";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -21,6 +23,7 @@
     nix-flatpak,
     plasma-manager,
     hyprland,
+    nix-index-database,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -36,6 +39,7 @@
 
           home-manager.nixosModules.home-manager
           nix-flatpak.nixosModules.nix-flatpak
+          nix-index-database.nixosModules.nix-index
           {
             home-manager.backupFileExtension = "backup";
             home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];

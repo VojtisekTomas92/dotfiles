@@ -1,0 +1,2 @@
+trigger: ":cb js"
+replace: "``` javascript \n $|$ \n ```"

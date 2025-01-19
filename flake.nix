@@ -9,7 +9,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      hostname = nixpkgs.lib.nixosSystem {
+      nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./nixOS/configuration.nix
@@ -17,11 +17,11 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.tomas = import ./home.nix;
-
+            home-manager.users.tomas = import ./home-manager/home.nix;
           }
         ];
       };
     };
   };
 }
+

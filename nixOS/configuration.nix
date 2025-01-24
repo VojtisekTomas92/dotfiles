@@ -11,11 +11,14 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages.nix
+    ./stylix.nix
+    ./custom-systemd-services.nix
   ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Hopefully makes wificard not break?
+  boot.extraModulePackages = [config.boot.kernelPackages.rtl8821ce];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -52,6 +55,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  security.pam.services.login.enableKwallet = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

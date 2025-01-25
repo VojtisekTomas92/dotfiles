@@ -50,7 +50,14 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    deviceSection = ''
+      Option "TearFree" "true"
+      Option "HWCursor" "off"
+      Option "SWCursor" "on"
+    '';
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -105,6 +112,11 @@
   services.displayManager.defaultSession = "plasmax11";
   # Install firefox.
   programs.firefox.enable = true;
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

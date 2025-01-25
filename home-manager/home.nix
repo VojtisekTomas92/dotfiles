@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./plasma-manager.nix
+    ./neovim.nix
   ];
   home.username = "tomas";
   home.homeDirectory = "/home/tomas";

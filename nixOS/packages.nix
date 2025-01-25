@@ -29,6 +29,9 @@
       aseprite
       nix-ld
       obsidian
+      distrobox
+      browsh
+      direnv
     ]
     ++ (with kdePackages; [
       # KDE-specific packages

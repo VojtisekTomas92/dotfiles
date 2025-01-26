@@ -1,4 +1,4 @@
-{
+return {
     "navarasu/onedark.nvim",
     config = function()
         local ok, _ = pcall(vim.cmd, 'colorscheme onedark')

@@ -38,5 +38,11 @@
   services.syncthing = {
     enable = true;
   };
+
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableBashIntegration = true;
+  };
+
   programs.home-manager.enable = true;
 }

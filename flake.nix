@@ -7,11 +7,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     stylix.url = "github:danth/stylix";
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -19,9 +20,12 @@
     home-manager,
     stylix,
     nix-flatpak,
-    plasma-manager,
+    kwin-effects-forceblur,
+    nix-index-database,
     ...
-  }: {
+  }: let
+    pkgs = nixpkgs.legacyPackages.${inputs.nixpkgs.system};
+  in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -30,12 +34,16 @@
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
           nix-flatpak.nixosModules.nix-flatpak
+          nix-index-database.nixosModules.nix-index
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.tomas = import ./home-manager/home.nix;
             home-manager.backupFileExtension = "hm-BACK";
-            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+            environment.systemPackages = with pkgs; [
+              # Use kwin-effects-forceblur directly from pkgs
+              kwin-effects-forceblur
+            ];
           }
         ];
       };

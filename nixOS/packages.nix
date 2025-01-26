@@ -32,10 +32,42 @@
       distrobox
       browsh
       direnv
+      # for neovim
+      luajitPackages.luarocks_bootstrap
+      lua
+      ripgrep-all
+      xclip
+      # Filesystems support (maybe some of these are preinstalled?)
+      dosfstools
+      jfsutils
+      btrfs-progs
+      exfatprogs
+      ntfs3g
+      xfsprogs
+      # Dev Stuff
+      cmake
+      autokey #
+      ## Godot
+      gdtoolkit_4
+      # Systemutilities
+      lshw
+      bleachbit
+      tdrop
     ]
     ++ (with kdePackages; [
       # KDE-specific packages
       kruler
+      dolphin-plugins
+      partitionmanager
+      kget
+      kcalc
+      kolourpaint
+      kompare
+      kcharselect
+      kde-rounded-corners
+      kdiskmark
+      kbackup
+      konsave
     ]);
 
   services.flatpak = {
@@ -53,4 +85,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
+
+  # Install firefox.
+  programs.firefox.enable = true;
 }

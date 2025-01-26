@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -13,6 +10,7 @@
     ./packages.nix
     ./stylix.nix
     ./custom-systemd-services.nix
+    ./graphics.nix
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -48,28 +46,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver = {
-    enable = true;
-    deviceSection = ''
-      Option "TearFree" "true"
-      Option "HWCursor" "off"
-      Option "SWCursor" "on"
-    '';
-  };
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  security.pam.services.login.enableKwallet = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
-
   # Configure console keymap
   console.keyMap = "de";
 
@@ -84,8 +60,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -93,7 +68,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tomas = {
@@ -105,13 +80,6 @@
       #  thunderbird
     ];
   };
-
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "tomas";
-  services.displayManager.defaultSession = "plasmax11";
-  # Install firefox.
-  programs.firefox.enable = true;
 
   virtualisation.podman = {
     enable = true;

@@ -32,6 +32,7 @@
       distrobox
       browsh
       direnv
+      libreoffice-qt6-fresh
       # for neovim
       luajitPackages.luarocks_bootstrap
       lua

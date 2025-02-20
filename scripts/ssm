@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+# Ansi codes for simple text styling
+GREEN=$(tput setaf 2)
+RED=$(tput setaf 1)
+RESET_STYLE=$(tput sgr0)
+BOLD=$(tput bold)
+DIM=$(tput dim)
+
+OS="unknown"
+PACKAGE_MANAGER="unknown"
+INSTALL_CMD="unknown"
+UPDATE_CMD="unknown"
+UPGRADE_CMD="unknown"
+PACKAGES="unknown"
+
+UBUNTU_PACKAGES="git stow luarocks xsel nodejs npm"
+
+SNAP_PACKAGES="nvim"
+
+function simple_choice {
+    while true; do
+
+        read -r -p "$(echo -e "$1" "(${GREEN}${BOLD}y${RESET_STYLE}${DIM}es${RESET_STYLE}/${RED}n${RESET_STYLE}${DIM}o${RESET_STYLE})")"
+
+        case "${REPLY,,}" in
+        y | yes)
+            true
+            return
+            ;;
+        n | no)
+            false
+            return
+            ;;
+        *)
+            if [[ -z "$REPLY" ]]; then
+                true
+                return
+            else
+                echo "Invalid input. Please enter 'y', 'yes', 'n', 'no', or press Enter." >&2
+            fi
+            ;;
+
+        esac
+    done
+}
+
+function is_package_installed {
+    # TODO Implement
+    return
+}
+
+function is_command_available {
+    # TODO Implement
+    return
+}
+
+function update_and_install {
+    if simple_choice "Do you want to update your repos?"; then
+        sudo "$PACKAGE_MANAGER" "$UPDATE_CMD"
+    fi
+    if simple_choice "Do you want to Upgrade your Packages?"; then
+        sudo "$PACKAGE_MANAGER" "$UPGRADE_CMD"
+    fi
+
+    if simple_choice "Do you want to install the following packages? $PACKAGES"; then
+        sudo "$PACKAGE_MANAGER" "$INSTALL_CMD" $PACKAGES
+    fi
+
+    if [[ "$OS" == "ubuntu" ]]; then
+        sudo snap install "$SNAP_PACKAGES" --classic
+    fi
+
+}
+
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS="${NAME,,}"
+fi
+
+if [[ "$OS" == "ubuntu" ]]; then
+    PACKAGE_MANAGER="apt"
+    INSTALL_CMD="install"
+    UPDATE_CMD="update"
+    UPGRADE_CMD="upgrade"
+    PACKAGES=$UBUNTU_PACKAGES
+    update_and_install
+else
+    echo "COULDNT DETERMINE IMPORTANT INFORMATION"
+fi

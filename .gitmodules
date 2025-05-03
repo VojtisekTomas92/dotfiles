@@ -1,0 +1,3 @@
+[submodule "SuspiciousSystemManager"]
+	path = SuspiciousSystemManager
+	url = ssh://git@git.r00t.li:222/suswombat/SuspiciousSystemManager.git

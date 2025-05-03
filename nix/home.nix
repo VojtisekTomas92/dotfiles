@@ -6,7 +6,7 @@
   home.stateVersion = "24.05";
   home.username = "tomas";
 
-  home.packages = [pkgs.alejandra pkgs.nixd];
+  home.packages = [pkgs.alejandra pkgs.nixd, pkgs.cowsay];
 
   programs = {
     home-manager = {

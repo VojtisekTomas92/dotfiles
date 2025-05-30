@@ -1,14 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -42,13 +43,11 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
 
-
-programs.xwayland.enable = true;
+  programs.xwayland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -72,16 +71,14 @@ programs.xwayland.enable = true;
     pulse.enable = true;
   };
 
-
   users.users.tomas = {
     isNormalUser = true;
     description = "tomas";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
       pciutils
       discord
-
     ];
   };
 
@@ -94,16 +91,16 @@ programs.xwayland.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-	git
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    git
   ];
 
-services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
-hardware.graphics.enable = true;
+  hardware.graphics.enable = true;
 
-hardware.nvidia = {
+  hardware.nvidia = {
     open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -116,8 +113,7 @@ hardware.nvidia = {
     nvidiaSettings = true;
   };
 
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

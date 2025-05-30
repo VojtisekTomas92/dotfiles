@@ -7,6 +7,15 @@
     nixd
     alejandra
   ];
+
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.github.MakovWait.Godots"
+      "com.github.tchx84.Flatseal"
+    ];
+  };
+
   programs.vscode = {
     enable = true;
   };

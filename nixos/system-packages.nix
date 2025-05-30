@@ -3,7 +3,11 @@
   pkgs,
   ...
 }: {
+  services.flatpak = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
-    # Nix specifix stuff
+    flatpak
   ];
 }

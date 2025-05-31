@@ -11,7 +11,7 @@
     flatpak
 
     papirus-icon-theme
-
+    obsidian
     # Gaming related
     protonup-qt
   ];

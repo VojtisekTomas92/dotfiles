@@ -11,5 +11,16 @@
     flatpak
 
     papirus-icon-theme
+
+    # Gaming related
+    protonup-qt
   ];
+
+  programs.steam = {
+    enable = true;
+  };
+
+  programs.gamemode = {
+    enable = true;
+  };
 }

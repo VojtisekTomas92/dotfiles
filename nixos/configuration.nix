@@ -19,6 +19,12 @@
     rtl8821ce
   ];
 
+  nix.settings = {
+    http-connections = 10;
+    max-jobs = "auto";
+    cores = 0;
+  };
+
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -78,9 +84,6 @@
       discord
     ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

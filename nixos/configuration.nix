@@ -77,6 +77,7 @@
   users.users.tomas = {
     isNormalUser = true;
     description = "tomas";
+    shell = pkgs.zsh;
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate

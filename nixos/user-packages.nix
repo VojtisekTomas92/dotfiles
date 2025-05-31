@@ -4,9 +4,12 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # Nix/OS stuff
-    nixd
-    alejandra
+    # Dev Stuff
+    ## Language Servers
+    nixd # Nix
+    ## Formatters
+    alejandra # Nix
+    stylua # Lua
     # System utils
     tlrc
     # Neovim seems to want it
@@ -21,6 +24,9 @@
     ];
   };
 
+  programs.helix = {
+    enable = true;
+  };
   programs.vscode = {
     enable = true;
   };

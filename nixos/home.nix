@@ -14,19 +14,20 @@
     ./user-configs/activitywatch.nix
     ./user-configs/keepassxc.nix
     ./user-configs/eza.nix
+    ./user-configs/neovim/neovim.nix
   ];
 
   #neovim
 
-  programs.neovim = {
-    enable = true;
-    extraLuaConfig = ''
-      package.path = "/home/tomas/dotfiles/neovim/lua/?.lua;" ..
-                      package.path
-
-      require("init")
-    '';
-  };
+  # programs.neovim = {
+  #  enable = true;
+  # extraLuaConfig = ''
+  #  package.path = "/home/tomas/dotfiles/neovim/lua/?.lua;" ..
+  #                 package.path
+  #
+  #     require("init")
+  #  '';
+  #};
 
   programs.kitty = {
     enable = true;

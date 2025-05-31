@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -21,6 +25,7 @@
     nix-flatpak,
     plasma-manager,
     chaotic,
+    nixvim,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -34,6 +39,7 @@
           home-manager.backupFileExtension = "BACK";
           home-manager.users.tomas = {
             imports = [
+              inputs.nixvim.homeModules.nixvim
               nix-flatpak.homeManagerModules.nix-flatpak
               inputs.plasma-manager.homeManagerModules.plasma-manager
               ./home.nix

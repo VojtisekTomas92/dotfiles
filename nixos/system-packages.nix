@@ -14,6 +14,8 @@
     obsidian
     # Gaming related
     protonup-qt
+    # Fonts
+    nerd-fonts.fira-code
   ];
 
   programs.steam = {

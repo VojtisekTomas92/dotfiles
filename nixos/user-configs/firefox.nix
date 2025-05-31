@@ -13,5 +13,7 @@
         };
       };
     };
+
+    nativeMessagingHosts = [pkgs.keepassxc];
   };
 }

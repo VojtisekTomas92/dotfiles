@@ -4,8 +4,13 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # Nix/OS stuff
     nixd
     alejandra
+    # System utils
+    tlrc
+    # Neovim seems to want it
+    ripgrep
   ];
 
   services.flatpak = {

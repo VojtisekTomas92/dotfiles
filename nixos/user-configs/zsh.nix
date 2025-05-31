@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   programs.zsh = {
@@ -15,5 +16,9 @@
       lla = "ls -la";
       nhs = "nh os switch /home/tomas/dotfiles/nixos";
     };
+    initContent = lib.mkOrder 1000 ''
+      bindkey "^[[1;3C" forward-word
+      bindkey "^[[1;3D" backward-word
+    '';
   };
 }

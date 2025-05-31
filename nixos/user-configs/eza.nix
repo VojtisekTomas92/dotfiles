@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
-  programs.keepassxc = {
+  programs.eza = {
     enable = true;
+    enableZshIntegration = true;
   };
 }

@@ -9,5 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     flatpak
+
+    papirus-icon-theme
   ];
 }

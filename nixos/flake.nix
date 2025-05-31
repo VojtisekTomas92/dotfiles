@@ -24,7 +24,6 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        inputs.plasma-manager.homeManagerModules.plasma-manager
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -32,6 +31,7 @@
           home-manager.users.tomas = {
             imports = [
               nix-flatpak.homeManagerModules.nix-flatpak
+              inputs.plasma-manager.homeManagerModules.plasma-manager
               ./home.nix
             ];
           };

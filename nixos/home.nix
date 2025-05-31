@@ -6,7 +6,13 @@
   home.username = "tomas";
   home.homeDirectory = "/home/tomas";
 
-  imports = [./user-packages.nix ./user-configs/plasma.nix ./user-configs/firefox.nix ./user-configs/zsh.nix];
+  imports = [
+    ./user-packages.nix
+    ./user-configs/plasma.nix
+    ./user-configs/firefox.nix
+    ./user-configs/zsh.nix
+    ./user-configs/activitywatch.nix
+  ];
 
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;

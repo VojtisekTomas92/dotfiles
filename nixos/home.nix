@@ -12,6 +12,7 @@
     ./user-configs/firefox.nix
     ./user-configs/zsh.nix
     ./user-configs/activitywatch.nix
+    ./user-configs/keepassxc.nix
   ];
 
   # Let Home Manager install and manage itself

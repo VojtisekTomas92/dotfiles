@@ -1,56 +1,73 @@
-vim.o.number = true
-
-local path_package = vim.fn.stdpath("data") .. "/site/"
-local mini_path = path_package .. "pack/deps/start/mini.nvim"
-if not vim.loop.fs_stat(mini_path) then
-	vim.cmd('echo "Installing `mini.nvim`" | redraw')
-	local clone_cmd = {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/echasnovski/mini.nvim",
-		mini_path,
-	}
-	vim.fn.system(clone_cmd)
-	vim.cmd("packadd mini.nvim | helptags ALL")
-	vim.cmd('echo "Installed `mini.nvim`" | redraw')
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Set up 'mini.deps' (customize to your liking)
-require("mini.deps").setup({ path = { package = path_package } })
-require("mini.pairs").setup()
-require("mini.completion").setup()
-require("mini.animate").setup()
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-MiniDeps.add("olimorris/onedarkpro.nvim")
-MiniDeps.add("neovim/nvim-lspconfig")
-MiniDeps.add("stevearc/conform.nvim")
-MiniDeps.add("folke/trouble.nvim")
+-- Setup lazy.nvim
+require("lazy").setup({
+	spec = {
+		require("plugins/plugins"),
+		require("plugins/blink"),
+		require("plugins.trouble"),
+		require("plugins.neotree"),
+	},
+	-- Configure any other settings here. See the documentation for more details.
+	-- colorscheme that will be used when installing plugins.
+	install = { colorscheme = { "habamax" } },
+	-- automatically check for plugin updates
+	checker = { enabled = true },
+})
 
-vim.g.mapleader = ","
--- Set colorscheme
-MiniDeps.now(function()
-	vim.cmd("colorscheme onedark")
-end)
+-- various stuff
+vim.cmd("colorscheme onedark")
+vim.o.number = true
+vim.o.cursorline = true
+require("nvim-web-devicons").get_icons()
+
+-- lsp
+vim.lsp.enable("nixd")
+vim.lsp.enable("lua_ls")
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				-- #TODO should improve this so it only gets executed when actually inside a vim config
+				globals = { "vim" },
+			},
+		},
+	},
+})
 
 vim.lsp.inlay_hint.enable()
 
--- LSP Related stuff
-
-vim.lsp.enable("nixd")
-
-require("trouble").setup()
-
-vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Toggle Trouble diagnostics" })
--- formatting
-
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		nix = { "alejandra" },
-	},
-	format_on_save = {
-		timeout = 500,
-		lsp_format = "fallback",
+vim.diagnostic.config({
+	underline = false,
+	signs = {
+		active = true,
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "󰟃",
+			[vim.diagnostic.severity.INFO] = "",
+		},
 	},
 })

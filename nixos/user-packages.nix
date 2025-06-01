@@ -1,17 +1,26 @@
 {
-  config,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
+    # No category yet
+    thunderbird
+    lazygit
+
     # Dev Stuff
+    ## Language package managers
+    luarocks
     ## Language Servers
     nixd # Nix
+    lua-language-server
     ## Formatters
     alejandra # Nix
+    nixfmt-rfc-style # Nix
     stylua # Lua
     # System utils
     tlrc
+    curl
     # Neovim seems to want it
     ripgrep
   ];
@@ -24,9 +33,6 @@
     ];
   };
 
-  programs.helix = {
-    enable = true;
-  };
   programs.vscode = {
     enable = true;
   };

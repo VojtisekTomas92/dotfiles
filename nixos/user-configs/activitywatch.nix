@@ -1,12 +1,11 @@
 # Thanks to https://github.com/mmuffins
 # https://github.com/NixOS/nixpkgs/issues/348454#issuecomment-2629114389
 {
-  inputs,
-  config,
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   services.activitywatch = {
     enable = true;
     # extraOptions = [];
@@ -28,8 +27,11 @@
   systemd.user.services.aw-awatcher = {
     Unit = {
       Description = "AWatcher";
-      Requires = ["activitywatch.service"];
-      After = ["activitywatch.service" "graphical-session.target"];
+      Requires = [ "activitywatch.service" ];
+      After = [
+        "activitywatch.service"
+        "graphical-session.target"
+      ];
     };
     Service = {
       ExecStart = lib.getExe pkgs.awatcher;
@@ -39,7 +41,7 @@
       ExecStartPre = "/run/current-system/sw/bin/sleep 5";
     };
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }

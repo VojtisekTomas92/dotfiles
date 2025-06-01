@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -14,7 +15,7 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  boot.kernelModules = ["8821ce"];
+  boot.kernelModules = [ "8821ce" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8821ce
   ];
@@ -78,7 +79,10 @@
     isNormalUser = true;
     description = "tomas";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
       pciutils
@@ -97,7 +101,7 @@
     git
   ];
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.graphics.enable = true;
 
@@ -115,9 +119,12 @@
   };
   # Apparantly i need this "Enable zsh completion.
   # Don't forget to add environment.pathsToLink = [ "/share/zsh" ]; to your system configuration to get completion for system packages (e.g. systemd."
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }

@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -15,7 +14,7 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  boot.kernelModules = [ "8821ce" ];
+  boot.kernelModules = ["8821ce"];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8821ce
   ];
@@ -101,7 +100,7 @@
     git
   ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.graphics.enable = true;
 
@@ -119,7 +118,10 @@
   };
   # Apparantly i need this "Enable zsh completion.
   # Don't forget to add environment.pathsToLink = [ "/share/zsh" ]; to your system configuration to get completion for system packages (e.g. systemd."
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
+
+  xdg.portal.extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
+  xdg.portal.config.common.default = "kde";
 
   nix.settings.experimental-features = [
     "nix-command"

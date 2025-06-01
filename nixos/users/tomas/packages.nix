@@ -7,6 +7,7 @@
     # No category yet
     thunderbird
     lazygit
+    audacity
 
     # Dev Stuff
     ## Language package managers

@@ -3,14 +3,13 @@
   home.homeDirectory = "/home/tomas";
 
   imports = [
-    ./user-packages.nix
-    ./user-configs/plasma.nix
-    ./user-configs/firefox.nix
-    ./user-configs/zsh.nix
-    ./user-configs/activitywatch.nix
-    ./user-configs/keepassxc.nix
-    ./user-configs/eza.nix
-    #./user-configs/neovim/neovim.nix
+    ../home-manager/modules/packages/plasma.nix
+    ../home-manager/modules/packages/firefox.nix
+    ../home-manager/modules/packages/zsh.nix
+    ../home-manager/modules/packages/activitywatch.nix
+    ../home-manager/modules/packages/keepassxc.nix
+    ../home-manager/modules/packages/eza.nix
+    ./packages.nix
   ];
 
   #neovim

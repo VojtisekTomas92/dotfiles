@@ -12,7 +12,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "L340";
 
   boot.kernelModules = ["8821ce"];
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -116,6 +116,11 @@
     };
     nvidiaSettings = true;
   };
+
+  environment.variables = {
+    MYMACHINE = "L340";
+  };
+
   # Apparantly i need this "Enable zsh completion.
   # Don't forget to add environment.pathsToLink = [ "/share/zsh" ]; to your system configuration to get completion for system packages (e.g. systemd."
   environment.pathsToLink = ["/share/zsh"];

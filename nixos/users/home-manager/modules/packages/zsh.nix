@@ -9,6 +9,7 @@
 
     shellAliases = {
       lla = "ls -la";
+      nhs = "nh os switch /home/$USER/dotfiles/nixos#$HOSTNAME";
     };
     initContent = lib.mkOrder 1000 ''
       bindkey "^[[1;3C" forward-word

@@ -24,7 +24,6 @@
         system = "x86_64-linux";
         modules = [
           ./machines/L340/configuration.nix
-          ./machines/L340/packages.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

@@ -10,7 +10,7 @@
     ../home-manager/modules/packages/keepassxc.nix
     ../home-manager/modules/packages/eza.nix
     ../home-manager/modules/packages/starship.nix
-    ./packages.nix
+    ../home-manager/modules/packages.nix
   ];
 
   #neovim

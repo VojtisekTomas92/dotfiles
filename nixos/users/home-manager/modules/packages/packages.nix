@@ -1,13 +1,15 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # No category yet
     thunderbird
     lazygit
     audacity
+    protonup-qt
+    obsidian
+    papirus-icon-theme
+    kdePackages.kate
+    pciutils
+    discord
 
     # Dev Stuff
     ## Language package managers
@@ -24,6 +26,8 @@
     curl
     # Neovim seems to want it
     ripgrep
+    # Fonts
+    nerd-fonts.fira-code
   ];
 
   services.flatpak = {

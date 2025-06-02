@@ -2,20 +2,14 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   services.flatpak = {
     enable = true;
   };
 
   environment.systemPackages = with pkgs; [
     flatpak
-    papirus-icon-theme
-    obsidian
-    # Gaming related
-    protonup-qt
-    # Fonts
-    nerd-fonts.fira-code
+    git
   ];
 
   programs.steam = {

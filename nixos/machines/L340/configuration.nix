@@ -6,6 +6,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./modules/packages.nix
+    ./modules/nix.nix
+    ./modules/graphics.nix
   ];
 
   # Bootloader.
@@ -18,12 +21,6 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8821ce
   ];
-
-  nix.settings = {
-    http-connections = 10;
-    max-jobs = "auto";
-    cores = 0;
-  };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -44,18 +41,6 @@
     LC_PAPER = "de_DE.UTF-8";
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
-  };
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
-
-  programs.xwayland.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
   };
 
   # Configure console keymap
@@ -82,39 +67,6 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      kdePackages.kate
-      pciutils
-      discord
-    ];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    git
-  ];
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.graphics.enable = true;
-
-  hardware.nvidia = {
-    open = true;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    prime = {
-      sync.enable = true;
-      offload.enable = false;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-    nvidiaSettings = true;
   };
 
   environment.variables = {
@@ -125,8 +77,8 @@
   # Don't forget to add environment.pathsToLink = [ "/share/zsh" ]; to your system configuration to get completion for system packages (e.g. systemd."
   environment.pathsToLink = ["/share/zsh"];
 
-  xdg.portal.extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
-  xdg.portal.config.common.default = "kde";
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
     "nix-command"

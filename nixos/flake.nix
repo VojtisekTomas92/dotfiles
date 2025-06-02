@@ -9,6 +9,7 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
@@ -17,6 +18,7 @@
     home-manager,
     nix-flatpak,
     plasma-manager,
+    hyprland,
     ...
   } @ inputs: {
     nixosConfigurations = {

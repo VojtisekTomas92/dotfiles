@@ -13,6 +13,12 @@
     ../home-manager/modules/packages.nix
   ];
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    portalPackage = null;
+  };
+
   #neovim
 
   programs.neovim = {

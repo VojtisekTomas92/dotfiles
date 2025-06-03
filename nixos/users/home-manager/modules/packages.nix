@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # No category yet
     thunderbird
@@ -10,8 +11,10 @@
     kdePackages.kate
     pciutils
     discord
-
-    # Dev Stuff
+    ags
+    mumble
+    eww
+    # Dev St
     ## Language package managers
     luarocks
     ## Language Servers
@@ -25,6 +28,7 @@
     tlrc
     curl
     # Neovim seems to want it
+    fd
     ripgrep
     # Fonts
     nerd-fonts.fira-code
@@ -36,6 +40,11 @@
       "io.github.MakovWait.Godots"
       "com.github.tchx84.Flatseal"
     ];
+  };
+
+  services.easyeffects = {
+    enable = true;
+
   };
 
   programs.vscode = {
@@ -51,7 +60,6 @@
 
   programs.nh = {
     enable = true;
-    flake = "/home/tomas/dotfiles/nixos";
   };
 
   services.syncthing = {

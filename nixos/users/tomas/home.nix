@@ -17,6 +17,9 @@
     enable = true;
     package = null;
     portalPackage = null;
+    extraConfig = ''
+      source = ~/dotfiles/hyprland/hyprland.conf
+    '';
   };
 
   #neovim

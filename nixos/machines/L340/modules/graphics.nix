@@ -1,6 +1,9 @@
 {
-  inputs,
+  config,
+  lib,
   pkgs,
+  inputs,
+  ...
 }: {
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
@@ -27,7 +30,7 @@
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     prime = {
       sync.enable = true;
       offload.enable = false;

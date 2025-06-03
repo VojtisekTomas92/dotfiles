@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -17,7 +18,7 @@
 
   networking.hostName = "L340";
 
-  boot.kernelModules = ["8821ce"];
+  boot.kernelModules = [ "8821ce" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8821ce
   ];
@@ -69,13 +70,21 @@
     ];
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.kdePackages.xdg-desktop-portal-kde
+    ];
+  };
+
   environment.variables = {
-    MYMACHINE = "L340";
+    KWIN_FORCE_SW_CURSOR = 1;
   };
 
   # Apparantly i need this "Enable zsh completion.
   # Don't forget to add environment.pathsToLink = [ "/share/zsh" ]; to your system configuration to get completion for system packages (e.g. systemd."
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

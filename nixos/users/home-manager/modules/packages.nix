@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     # No category yet
-    thunderbird
     lazygit
     audacity
     protonup-qt
@@ -10,20 +9,12 @@
     papirus-icon-theme
     kdePackages.kate
     pciutils
+    # Communication
     discord
-    ags
     mumble
-    eww
-    # Dev St
+    # Dev Stuff
     ## Language package managers
     luarocks
-    ## Language Servers
-    nixd # Nix
-    lua-language-server
-    ## Formatters
-    alejandra # Nix
-    nixfmt-rfc-style # Nix
-    stylua # Lua
     # System utils
     tlrc
     curl
@@ -32,6 +23,7 @@
     ripgrep
     # Fonts
     nerd-fonts.fira-code
+    bemenu
   ];
 
   services.flatpak = {
@@ -43,11 +35,6 @@
   };
 
   services.easyeffects = {
-    enable = true;
-
-  };
-
-  programs.vscode = {
     enable = true;
   };
 

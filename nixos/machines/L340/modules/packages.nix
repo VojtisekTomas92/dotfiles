@@ -13,6 +13,7 @@
         dontPatchELF = true;
         nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
       }))
+    xdotool
   ];
 
   programs.steam = {

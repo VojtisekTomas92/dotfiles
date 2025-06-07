@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   home.username = "tomas";
   home.homeDirectory = "/home/tomas";
@@ -11,6 +12,8 @@
     ../home-manager/modules/packages/eza.nix
     ../home-manager/modules/packages/starship.nix
     ../home-manager/modules/packages.nix
+    ../home-manager/modules/packages/ssh.nix
+    ../home-manager/modules/packages/vscode.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -29,7 +32,6 @@
     extraLuaConfig = ''
       package.path = "/home/tomas/dotfiles/neovim/lua/?.lua;" ..
         package.path
-
       require("init")
     '';
   };

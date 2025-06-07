@@ -9,8 +9,7 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
-    hyprland.url = "github:hyprwm/Hyprland";
-    ags.url = "github:aylur/ags";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs =
@@ -20,20 +19,23 @@
       home-manager,
       nix-flatpak,
       plasma-manager,
-      hyprland,
-      ags,
+      nix-vscode-extensions,
       ...
     }@inputs:
     {
       nixosConfigurations = {
         L340 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-
           specialArgs = {
             inherit inputs;
           };
 
           modules = [
+
+            {
+              nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
+            }
+
             ./machines/L340/configuration.nix
             home-manager.nixosModules.home-manager
             {

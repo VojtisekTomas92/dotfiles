@@ -4,17 +4,12 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
 
-  # Enable hyprland
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
   programs.xwayland.enable = true;
 
   # Configure keymap in X11
@@ -23,7 +18,7 @@
     variant = "";
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.graphics.enable = true;
 

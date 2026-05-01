@@ -3,11 +3,6 @@ let
   secrets = import ../secrets.nix;
 in
 {
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.age.keyFile = "/home/tomas/.config/sops/age/keys.txt";
-  sops.secrets.syncthing_gui_password = {
-    owner = "tomas";
-  };
   services.syncthing = {
     enable = true;
 

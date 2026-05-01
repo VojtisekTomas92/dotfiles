@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./graphics.nix
     ./syncthing.nix
+    ./sops.nix
   ];
 
   services.syncthing = {

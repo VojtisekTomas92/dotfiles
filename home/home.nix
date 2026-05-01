@@ -11,6 +11,7 @@
     ./nixcord.nix
     ./firefox.nix
     ./git.nix
+    ./keepassxc.nix
   ];
 
   programs.home-manager.enable = true;

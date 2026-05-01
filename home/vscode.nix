@@ -13,6 +13,9 @@
 
         "editor.formatOnSave" = true;
 
+        "chat.agent.enabled" = false;
+        "chat.disableAIFeatures" = true;
+
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nixd" = {

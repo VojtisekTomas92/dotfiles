@@ -12,7 +12,7 @@
     ./firefox.nix
     ./git.nix
     ./keepassxc.nix
-    ./plasma
+    ./plasma.nix
   ];
 
   programs.home-manager.enable = true;

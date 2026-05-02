@@ -10,6 +10,8 @@
     age
     pwgen
     obsidian
+    uv
+    devenv
   ];
 
   services.flatpak = {

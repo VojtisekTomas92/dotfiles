@@ -9,6 +9,7 @@
     sops
     age
     pwgen
+    obsidian
   ];
 
   services.flatpak = {

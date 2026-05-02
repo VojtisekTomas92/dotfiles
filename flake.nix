@@ -14,6 +14,12 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
   outputs =
     {
@@ -24,6 +30,7 @@
       nixcord,
       nix-flatpak,
       sops-nix,
+      plasma-manager,
       ...
     }@inputs:
     let
@@ -53,6 +60,7 @@
           ./home/home.nix
           inputs.nixcord.homeModules.nixcord
           nix-flatpak.homeManagerModules.nix-flatpak
+          plasma-manager.homeModules.plasma-manager
         ];
       };
     };

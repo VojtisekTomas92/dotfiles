@@ -15,6 +15,7 @@
     ./graphics.nix
     ./syncthing.nix
     ./sops.nix
+    ./restic.nix
   ];
 
   services.syncthing = {

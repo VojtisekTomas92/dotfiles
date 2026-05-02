@@ -6,6 +6,7 @@
       extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
         zhuangtongfa.material-theme
         jnoortheen.nix-ide
+        ms-python.python
 
       ];
       userSettings = {

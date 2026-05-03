@@ -15,6 +15,8 @@
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
+    # Gaming
+    faugus-launcher
   ];
 
   services.flatpak = {

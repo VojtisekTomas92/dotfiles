@@ -12,6 +12,9 @@
     obsidian
     uv
     devenv
+    # Fonts
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
   ];
 
   services.flatpak = {

@@ -19,6 +19,8 @@
 
         "explorer.compactFolders" = false;
 
+        "editor.minimap.autohide" = "mouseover";
+
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nixd" = {

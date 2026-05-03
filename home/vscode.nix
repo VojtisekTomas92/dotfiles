@@ -17,6 +17,8 @@
         "chat.agent.enabled" = false;
         "chat.disableAIFeatures" = true;
 
+        "explorer.compactFolders" = false;
+
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nixd" = {

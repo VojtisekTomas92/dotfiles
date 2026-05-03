@@ -107,6 +107,9 @@
   nixpkgs.config.allowUnfree = true;
 
   services.flatpak.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
+  programs.zsh.enable = true;
+  users.users.tomas.shell = pkgs.zsh;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

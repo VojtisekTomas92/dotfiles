@@ -13,6 +13,7 @@
     ./git.nix
     ./keepassxc.nix
     ./plasma.nix
+    ./zsh.nix
   ];
 
   programs.home-manager.enable = true;

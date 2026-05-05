@@ -20,6 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
   };
   outputs =
     {
@@ -31,6 +34,7 @@
       nix-flatpak,
       sops-nix,
       plasma-manager,
+      nixvim,
       ...
     }@inputs:
     let
@@ -61,6 +65,7 @@
           inputs.nixcord.homeModules.nixcord
           nix-flatpak.homeManagerModules.nix-flatpak
           plasma-manager.homeModules.plasma-manager
+          nixvim.homeModules.nixvim
         ];
       };
     };

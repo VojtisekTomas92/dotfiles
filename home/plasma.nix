@@ -50,11 +50,11 @@
   programs.konsole = {
     enable = true;
     defaultProfile = "tomas";
-    customColorSchemes = {
-      "OneDarkPro" = ../resources/konsole/onedarkpro.colorscheme;
-    };
+    #customColorSchemes = {
+    #"OneDarkPro" = ../resources/konsole/onedarkpro.colorscheme;
+    #};
     profiles."tomas" = {
-      colorScheme = "OneDarkPro";
+      #colorScheme = "OneDarkPro";
       font = {
         name = "FiraCode Nerd Font Mono";
         size = 12;

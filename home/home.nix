@@ -14,6 +14,7 @@
     ./keepassxc.nix
     ./plasma.nix
     ./zsh.nix
+    ./nixvim.nix
   ];
 
   programs.home-manager.enable = true;

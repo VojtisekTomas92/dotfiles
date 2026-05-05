@@ -7,10 +7,15 @@
         zhuangtongfa.material-theme
         jnoortheen.nix-ide
         ms-python.python
+        ms-python.vscode-pylance
+        ms-python.debugpy
+        usernamehw.errorlens
+        pkief.material-icon-theme
 
       ];
       userSettings = {
         "workbench.colorTheme" = "One Dark Pro";
+        "workbench.iconTheme" = "material-icon-theme";
 
         "editor.formatOnSave" = true;
 

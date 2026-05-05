@@ -11,6 +11,7 @@
         ms-python.debugpy
         usernamehw.errorlens
         pkief.material-icon-theme
+        tamasfe.even-better-toml
 
       ];
       userSettings = {

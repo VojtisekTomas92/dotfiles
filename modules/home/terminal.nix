@@ -15,4 +15,10 @@
       theme = "One Double Dark";
     };
   };
+  xdg.configFile."starship.toml".source = ../../resources/starship.toml;
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

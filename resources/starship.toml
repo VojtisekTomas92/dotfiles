@@ -1,0 +1,292 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Thanks to VictorPLopes
+# https://github.com/VictorPLopes/OneDark-Pro-Starship
+
+format = """
+[](color_red0)\
+$os\
+$username\
+[](bg:color_orange fg:color_red0)\
+$directory\
+[](fg:color_orange bg:color_yellow)\
+$git_branch\
+$git_status\
+[](fg:color_yellow bg:color_green)\
+$c\
+$dotnet\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$elixir\
+$elm\
+$gradle\
+$julia\
+$nim\
+$scala\
+[](fg:color_green bg:color_cyan)\
+$docker_context\
+[ ](color_cyan)\
+$fill\
+([ ](mono4)\
+$time\
+$battery\
+[](mono4))\
+$line_break$character"""
+
+palette = 'one_dark'
+
+[palettes.one_dark]
+mono0 = '#d7dae0'
+mono1 = '#abb2bf'
+mono2 = '#828997'
+mono3 = '#5c6370'
+mono4 = '#3f4451'
+color_red0 = '#e06c75'
+color_red1 = '#be5046'
+color_green = '#98c379'
+color_yellow = '#e5c07b'
+color_blue = '#61afef'
+color_purple = '#c678dd'
+color_cyan = '#56b6c2'
+color_orange = '#d19a66'
+syntax_fg = '#abb2bf'
+syntax_bg = '#282c34'
+color_bg2 = '#665c54'
+syntax_gutter = '#647382'
+syntax_accent = '#528cff'
+
+[os]
+disabled = false
+style = "bg:color_red0 fg:syntax_bg"
+format = '[ $symbol ]($style)'
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = "󰀲"
+Arch = ""
+CentOS = ""
+Debian = "󰣚"
+EndeavourOS = ""
+Fedora = "󰣛"
+FreeBSD = "󰣠"
+Gentoo = "󰣨"
+Illumos = ""
+Linux = "󰌽"
+Macos = "󰀵"
+Manjaro = "󱘊"
+Mint = "󰣭"
+NixOS = "󱄅"
+OpenBSD = ""
+openSUSE = ""
+Pop = ""
+Raspbian = ""
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Redox = "R"
+Solus = ""
+SUSE = ""
+Ubuntu = "󰕈"
+Unknown = ""
+Windows = "󰍲"
+
+[username]
+show_always = true
+style_user = "bold bg:color_red0 fg:syntax_bg"
+style_root = "bold italic bg:color_red0 fg:syntax_bg"
+format = '[ $user ]($style)'
+
+[directory]
+style = "italic fg:syntax_bg bg:color_orange"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:color_yellow"
+format = '[[ $symbol $branch ](fg:syntax_bg bg:color_yellow)]($style)'
+
+# Module that displays the current git status.
+[git_status]
+style = "bg:color_green"
+format = '[[($all_status$ahead_behind )](fg:syntax_bg bg:color_yellow)]($style)'
+
+# Language specific modules
+[nodejs]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[dotnet]
+symbol = "󰪮"
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[php]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[java]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[kotlin]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[python]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol ($version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[elm]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol ($version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[gradle]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol ($version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[julia]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol ($version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:color_green"
+format = '[[ $symbol ($version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[scala]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol ($version) ](fg:syntax_bg bg:color_green)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:mono3"
+format = '[[ $symbol( $context) ](fg:syntax_fg bg:mono3)]($style)'
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+use_12hr = false
+style = "bg:mono4"
+format = '[[ 󰥔 $time ](fg:syntax_fg bg:mono4)]($style)'
+
+[battery]
+format = '[$symbol $percentage ]($style)'
+
+[[battery.display]]
+threshold = 10
+style = "bold bg:mono4 fg:color_red1"
+discharging_symbol = "󰁺"
+charging_symbol = "󰢜"
+
+[[battery.display]]
+threshold = 20
+style = "bold bg:mono4 fg:color_red0"
+discharging_symbol = "󰁻"
+charging_symbol = "󰂆"
+
+[[battery.display]]
+threshold = 30
+style = "bold bg:mono4 fg:color_yellow"
+discharging_symbol = "󰁼"
+charging_symbol = "󰂇"
+
+[[battery.display]]
+threshold = 40
+style = "bold bg:mono4 fg:color_yellow"
+discharging_symbol = "󰁽"
+charging_symbol = "󰂈"
+
+[[battery.display]]
+threshold = 50
+style = "bold bg:mono4 fg:color_yellow"
+discharging_symbol = "󰁾"
+charging_symbol = "󰢝"
+
+[[battery.display]]
+threshold = 60
+style = "bold bg:mono4 fg:color_green"
+discharging_symbol = "󰁿"
+charging_symbol = "󰂉"
+
+[[battery.display]]
+threshold = 70
+style = "bold bg:mono4 fg:color_green"
+discharging_symbol = "󰂀"
+charging_symbol = "󰢞"
+
+[[battery.display]]
+threshold = 80
+style = "bold bg:mono4 fg:color_green"
+discharging_symbol = "󰂁"
+charging_symbol = "󰂊"
+
+[[battery.display]]
+threshold = 90
+style = "bold bg:mono4 fg:color_green"
+discharging_symbol = "󰂂"
+charging_symbol = "󰂋"
+
+[[battery.display]]
+style = "bold bg:mono4 fg:color_green"
+discharging_symbol = "󰁹"
+charging_symbol = "󰂅"
+threshold = 100
+
+[character]
+success_symbol = '[󰅂](bold fg:syntax_accent)'
+error_symbol = '[](bold fg:color_red1)'
+vimcmd_symbol = '[󰅁](bold fg:syntax_accent)'
+vimcmd_replace_one_symbol = '[󰅁](bold fg:color_purple)'
+vimcmd_replace_symbol = '[󰅁](bold fg:color_purple)'
+vimcmd_visual_symbol = '[󰅁](bold fg:color_yellow)'

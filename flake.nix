@@ -52,7 +52,7 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          ./system/configuration.nix
+          ./hosts/l340/configuration.nix
           sops-nix.nixosModules.sops
         ];
       };
@@ -61,8 +61,8 @@
         inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
         modules = [
-          ./home/home.nix
-          inputs.nixcord.homeModules.nixcord
+          ./hosts/l340/home.nix
+          nixcord.homeModules.nixcord
           nix-flatpak.homeManagerModules.nix-flatpak
           plasma-manager.homeModules.plasma-manager
           nixvim.homeModules.nixvim

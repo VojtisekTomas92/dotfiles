@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 let
-  secrets = import ../secrets.nix;
+  secrets = import ../../../secrets/secrets.nix;
 in
 {
   services.syncthing = {

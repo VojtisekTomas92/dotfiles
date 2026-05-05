@@ -6,16 +6,15 @@
   home.stateVersion = "25.11";
 
   imports = [
-    ./vscode.nix
-    ./packages.nix
-    ./nixcord.nix
-    ./firefox.nix
-    ./git.nix
-    ./keepassxc.nix
-    ./plasma.nix
-    ./zsh.nix
-    ./nixvim.nix
-    ./ghostty.nix
+    ../../modules/home/apps/firefox.nix
+    ../../modules/home/apps/git.nix
+    ../../modules/home/apps/keepassxc.nix
+    ../../modules/home/apps/nixcord.nix
+    ../../modules/home/apps/nixvim.nix
+    ../../modules/home/apps/vscode.nix
+    ../../modules/home/packages.nix
+    ../../modules/home/plasma.nix
+    ../../modules/home/terminal.nix
   ];
 
   programs.home-manager.enable = true;

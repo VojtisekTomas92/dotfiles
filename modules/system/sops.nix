@@ -1,6 +1,6 @@
 { ... }:
 {
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.age.keyFile = "/home/tomas/.config/sops/age/keys.txt";
 
   sops.secrets.syncthing_gui_password = {

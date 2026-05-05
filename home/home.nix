@@ -15,6 +15,7 @@
     ./plasma.nix
     ./zsh.nix
     ./nixvim.nix
+    ./ghostty.nix
   ];
 
   programs.home-manager.enable = true;

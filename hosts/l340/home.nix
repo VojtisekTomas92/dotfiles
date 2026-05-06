@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
 
   home.username = "tomas";
@@ -15,11 +15,11 @@
     ../../modules/home/packages.nix
     ../../modules/home/plasma.nix
     ../../modules/home/terminal.nix
+    ../../modules/home/ssh.nix
+    ../../modules/home/apps/emacs.nix
   ];
 
   programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [ nh ]; # Keep this empty to use system packages for now
 
   programs.nh = {
     enable = true;

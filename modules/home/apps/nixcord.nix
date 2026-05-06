@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   programs.nixcord = {
     enable = true;
@@ -21,4 +21,5 @@
       };
     };
   };
+  home.file."${config.xdg.configHome}/discord/settings.json".force = true;
 }

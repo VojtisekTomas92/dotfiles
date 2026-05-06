@@ -23,6 +23,7 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
+
   };
   outputs =
     {
@@ -35,6 +36,7 @@
       sops-nix,
       plasma-manager,
       nixvim,
+
       ...
     }@inputs:
     let

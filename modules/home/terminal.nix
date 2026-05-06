@@ -1,11 +1,16 @@
-{ config, ... }:
 {
-  programs.zsh = {
-    enable = true;
-    dotDir = "${config.xdg.configHome}/zsh";
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    autosuggestion.enable = true;
+  pkgs,
+  config,
+  ...
+}:
+{
+
+  home.packages = with pkgs; [
+    zsh
+  ];
+
+  home.file.".zshrc" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/resources/configs/.zshrc";
   };
 
   programs.ghostty = {
@@ -13,12 +18,12 @@
     enableZshIntegration = true;
     settings = {
       theme = "One Double Dark";
+      font-family = "FiraMono Nerd Font Regular";
+      font-family-bold = "FiraMono Nerd Font Bold";
     };
   };
-  xdg.configFile."starship.toml".source = ../../resources/starship.toml;
 
-  programs.starship = {
+  programs.bat = {
     enable = true;
-    enableZshIntegration = true;
   };
 }

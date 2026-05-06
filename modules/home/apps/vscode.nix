@@ -12,12 +12,15 @@
         usernamehw.errorlens
         pkief.material-icon-theme
         tamasfe.even-better-toml
+        ms-vscode-remote.remote-ssh
 
       ];
       userSettings = {
         "workbench.colorTheme" = "One Dark Pro";
         "workbench.iconTheme" = "material-icon-theme";
 
+        "editor.fontFamily" = "'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace'";
+        "editor.fontLigatures" = true;
         "editor.formatOnSave" = true;
 
         "chat.agent.enabled" = false;

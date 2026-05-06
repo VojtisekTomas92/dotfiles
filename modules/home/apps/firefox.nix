@@ -8,7 +8,11 @@
       "en-US"
       "de"
     ];
-
+    profiles.tomas = {
+      isDefault = true;
+      id = 0;
+      name = "tomas";
+    };
     policies = {
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = {
@@ -16,10 +20,6 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
           private_browsing = true;
-        };
-        "{17b1b318-a398-44d0-bfd5-c25538ef8e39}" = {
-          installation_mode = "force_installed";
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/onedark-pro/latest.xpi";
         };
       };
 
